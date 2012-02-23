@@ -9,7 +9,7 @@ from london.apps.ajax import site
 site.register_scripts_dir('images', os.path.join(os.path.dirname(__file__), 'scripts'))
 
 
-html = \
+html =\
 '''
 <hr>
 <div style="margin-top:10px" id="images-container">
@@ -26,7 +26,7 @@ html = \
 height = 50
 
 def toHtml(img):
-    return '<a style="cursor:pointer"><img src="%s" height="%d" alt="%s" title="%s"></a>' % \
+    return '<a style="cursor:pointer"><img src="%s" height="%d" alt="%s" title="%s"></a>' %\
            (img['image'].url,height,img['alt_text'] or '',img['name'])
 
 class ImagesWidget(forms.Widget):

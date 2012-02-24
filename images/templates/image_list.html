@@ -1,11 +1,19 @@
 <div id="images-container" class="well">
-   {% for image in images %}
-        <a>
-            <img src="{{ image.image.url }}" height="50px" alt="{{ image.alt_text }}" title="{{ image.name }}">
-        </a>
-   {% endfor %}
+    <div id="images-scroll scrollable">
+        <div class="items">
+           {% for row in images %}
+            <div>
+                {% for image in row %}
+                    <a>
+                        <img src="{{ image.image.url }}" height="{{ image_height }}" alt="{{ image.alt_text }}" title="{{ image.name }}">
+                    </a>
+                {% endfor %}
+            </div>
+           {% endfor %}
+        </div>
+    </div>
 </div>
 
-<script src="/ajax/scripts/images:images/" type="text/javascript"></script>
+{% body_scripts "images:images" %}
 
 <link href="/ajax/styles/images:basic/" media="screen" rel="stylesheet" type="text/css" />

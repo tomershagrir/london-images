@@ -5,6 +5,17 @@
 
 #images-container {
     margin-top:10px;
+    /*height: 90px;*/
+    /*overflow-x: scroll;*/
+}
+
+#images-scroll {
+    /*width: 2000px;*/
+    margin: 0px;
+}
+
+#images-container a {
+    cursor: pointer;
 }
 
 label {

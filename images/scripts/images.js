@@ -1,4 +1,4 @@
-Images = (function($) {
+(function($) {
     var TAG = '{IMAGE:{name}}';
     var self = {
         init: function() {
@@ -15,4 +15,4 @@ Images = (function($) {
         }
     };
     return self;
-})(jQuery);
+})(jQuery).init();

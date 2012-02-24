@@ -1,5 +1,5 @@
 from london.apps import admin
-from london.apps.images.models import Image
+from models import Image
 
 class ModuleImage(admin.CrudModule):
     model = Image

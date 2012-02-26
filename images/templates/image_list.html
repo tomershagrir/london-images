@@ -1,5 +1,11 @@
 <div id="images-container" class="well">
-    <div id="images-scroll scrollable">
+
+    <div id="actions">
+        <a class="prev">&laquo; Back</a> |
+        <a class="next">More pictures &raquo;</a>
+    </div>
+
+    <div id="images-scroll" class="scrollable vertical">
         <div class="items">
            {% for row in images %}
             <div>
@@ -14,6 +20,6 @@
     </div>
 </div>
 
-{% body_scripts "images:images" %}
+{% body_scripts "images:images,images:scrollable" %}
+{% style_tags "images:basic" %}
 
-<link href="/ajax/styles/images:basic/" media="screen" rel="stylesheet" type="text/css" />

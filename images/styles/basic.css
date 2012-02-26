@@ -6,12 +6,16 @@
 #images-container {
     margin-top:10px;
     /*height: 90px;*/
-    /*overflow-x: scroll;*/
+    /*overflow-x: auto;*/
 }
 
-#images-scroll {
+#images-scroll div {
     /*width: 2000px;*/
     margin: 0px;
+}
+
+#images-scroll a {
+    margin-right: 14px;
 }
 
 #images-container a {
@@ -37,4 +41,25 @@ label {
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+/* root element for scrollable */
+.scrollable {
+
+    /* required settings */
+    position:relative;
+    overflow:hidden;
+
+    /* vertical scrollables have typically larger height than width but not now */
+    height: 50px;
+    /*width: 700px;*/
+    /*overflow-y: auto;*/
+}
+
+/* root element for scrollable items */
+.scrollable .items {
+    position:absolute;
+
+    /* this time we have very large space for the height */
+    height:20000em;
 }

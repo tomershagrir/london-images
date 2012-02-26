@@ -18,7 +18,7 @@ def partition(lst,n):
 class ImagesWidget(forms.Widget):
 
     image_height = '50px'
-    images_per_row = 7
+    images_per_row = 6
 
     def render(self, name, value, attrs=None):
         images = Image.query()

@@ -15,11 +15,15 @@
 }
 
 #images-scroll a {
-    margin-right: 14px;
+    margin-right: 10px;
 }
 
 #images-container a {
     cursor: pointer;
+}
+
+#images-container .form-search {
+    margin-bottom: 10px;
 }
 
 label {
@@ -48,10 +52,10 @@ label {
 
     /* required settings */
     position:relative;
-    overflow:hidden;
+    overflow:auto;
 
     /* vertical scrollables have typically larger height than width but not now */
-    height: 50px;
+    height: 106px;
     /*width: 700px;*/
     /*overflow-y: auto;*/
 }
@@ -61,5 +65,5 @@ label {
     position:absolute;
 
     /* this time we have very large space for the height */
-    height:20000em;
+    /*height:20000em;*/
 }

@@ -1,20 +1,22 @@
 <div id="images-container" class="well">
 
-    <div id="actions">
-        <a class="prev">&laquo; Back</a> |
-        <a class="next">More pictures &raquo;</a>
+    <div class="form-search">
+        <input type="text" class="input-medium search-query">
+        <button class="btn">Search</button>
     </div>
+
+
+    <!--<div id="actions">-->
+        <!--<a class="prev">&laquo; Back</a> |-->
+        <!--<a class="next">More pictures &raquo;</a>-->
+    <!--</div>-->
 
     <div id="images-scroll" class="scrollable vertical">
         <div class="items">
-           {% for row in images %}
-            <div>
-                {% for image in row %}
-                    <a>
-                        <img src="{{ image.image.url }}" height="{{ image_height }}" alt="{{ image.alt_text }}" title="{{ image.name }}">
-                    </a>
-                {% endfor %}
-            </div>
+            {% for image in images %}
+                <a>
+                    <img src="{{ image.image.url }}" height="{{ image_height }}" alt="{{ image.alt_text }}" title="{{ image.name }}">
+                </a>
            {% endfor %}
         </div>
     </div>

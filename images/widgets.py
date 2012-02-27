@@ -5,15 +5,6 @@ from london.templates import render_to_string
 from models import Image
 
 
-def partition(lst,n):
-    new_lst = [[]]
-    row = new_lst[0]
-    for element in lst:
-        if len(row) == n:
-            row = []
-            new_lst.append(row)
-        row.append(element)
-    return new_lst
 
 class ImagesWidget(forms.Widget):
 
@@ -21,8 +12,10 @@ class ImagesWidget(forms.Widget):
     images_per_row = 6
 
     def render(self, name, value, attrs=None):
+        # TODO: filter by current site
+        ## the current site is in the request. How do we access the request from here?
+        ## images = site['images']
         images = Image.query()
-        lst = partition(images,self.images_per_row)
-        return render_to_string('image_list.html', {'images':lst, 'image_height':self.image_height })
+        return render_to_string('image_list.html', {'images':images, 'image_height':self.image_height })
 
 

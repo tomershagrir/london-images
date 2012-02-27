@@ -5,7 +5,7 @@ class Image(models.Model):
     """
     """
     name = models.CharField(max_length=100)
-    site = models.ManyToManyField(Site,related_name='images')
+    sites = models.ManyToManyField(Site, blank=True, related_name='images')
     keywords = models.ListField(blank=True, null=True)
     alt_text = models.CharField(max_length=100,blank=True,null=True)
     image = models.ImageField()

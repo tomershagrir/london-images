@@ -11,6 +11,9 @@ class Image(models.Model):
     image = models.ImageField()
 
     def __unicode__(self):
-        return self.name
+        return self['name']
+
+    def all_sites(self):
+        return Site.query()
 
 

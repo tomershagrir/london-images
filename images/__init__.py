@@ -11,6 +11,6 @@ site.register_styles_dir('images', os.path.join(os.path.dirname(__file__), 'styl
 
 def add_page_fields(sender):
     form = sender
-    form.fields['images'] = london.forms.Field(name='images', widget=ImagesWidget)
+    form.fields['images'] = london.forms.Field(name='images', widget=ImagesWidget,required=False)
 
 page_form_initialize.connect(add_page_fields)

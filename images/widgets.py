@@ -18,4 +18,8 @@ class ImagesWidget(forms.Widget):
         images = Image.query()
         return render_to_string('image_list.html', {'images':images, 'image_height':self.image_height })
 
+    def render_label(self, name, label):
+        return mark_safe(u'<h2><span>%s</span></h2>' % name)
+
+
 

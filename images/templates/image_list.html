@@ -2,21 +2,32 @@
 
     <div class="form-search">
         <input type="text" class="input-medium search-query">
-        <button class="btn">Search</button>
+        <button class="btn"></button>
     </div>
 
+    <div class="clearfix scrollable-container">
 
-    <div id="images-scroll" class="scrollable vertical">
-        <div class="items">
-            {% for image in images %}
-                <a>
-                    <img src="{{ image.image.url }}" height="{{ image_height }}" alt="{{ image.alt_text }}" title="{{ image.name }}">
-                </a>
-           {% endfor %}
+        <a class="prev browse left"></a>
+
+        <div id="images-scroll" class="scrollable">
+            <div class="items">
+               {% for row in images %}
+                    <div>
+                        {% for image in row %}
+                            <a>
+                                <img src="{{ image.image.url }}" height="{{ image_height }}" alt="{{ image.alt_text }}" title="{{ image.name }}">
+                            </a>
+                       {% endfor %}
+                    </div>
+               {% endfor %}
+            </div>
         </div>
+
+        <a class="next browse right"></a>
     </div>
+
 </div>
 
-{% body_scripts "images:images" %}
+{% body_scripts "images:scrollable,images:images" %}
 {% style_tags "images:basic" %}
 

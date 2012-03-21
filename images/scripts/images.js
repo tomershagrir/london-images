@@ -49,6 +49,8 @@
             $.getJSON(query_url + terms).success(filter);
         });
 
+        container.find(".scrollable").scrollable();
+
     });
 
 })(jQuery);

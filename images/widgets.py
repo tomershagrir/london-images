@@ -6,6 +6,8 @@ from models import Image
 
 
 
+def partition(lst,n): return [lst[:n]] + partition(lst[n:],n) if lst and n else []
+
 class ImagesWidget(forms.Widget):
 
     image_height = '50px'
@@ -16,7 +18,8 @@ class ImagesWidget(forms.Widget):
         ## the current site is in the request. How do we access the request from here?
         ## images = site['images']
         images = Image.query()
-        return render_to_string('image_list.html', {'images':images, 'image_height':self.image_height })
+        rows = partition(list(images),self.images_per_row)
+        return render_to_string('image_list.html', {'images':rows, 'image_height':self.image_height })
 
     def render_label(self, name, label):
         return mark_safe(u'<h2><span>%s</span></h2>' % name)

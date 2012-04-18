@@ -1,0 +1,31 @@
+{% base "admin/base.html" %}
+
+{% piece "title" %}Deleting a {{ object_verbose_name }}{% endpiece %}
+
+{% piece "module_form" %}
+
+<h1>Deleting a {{ object_verbose_name }}</h1>
+
+<h2><span>Deleting a {{ object_verbose_name }}</span></h2>
+
+
+
+<form method="post" class="module-form-delete" action="{{ request.path_info }}">
+    <a href="../" class="edit" rel="forcehistory">Back to edit {{ object_verbose_name }}</a>
+
+
+    {% if object.all_sites().count()  %}
+    <h3>Warning:</h3>
+    <p>This image appears in the following sites:</p>
+
+    {% for site in object.all_sites() %}
+        <input type="checkbox" name="{{ site }}" value="{{ site }}" /> {{ site }}<br />
+    {% endfor %}
+    {% endif %}
+
+    <br>
+
+    <input type="hidden" name="confirm" value="1"/>
+    <input type="submit" value="Delete from the selected sites"/>
+</form>
+{% endpiece %}

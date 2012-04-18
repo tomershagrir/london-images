@@ -1,6 +1,7 @@
 import os
 from london.apps.ajax import site
 from pages.signals import page_form_initialize
+from blog.signals import post_form_initialize
 import london
 from widgets import ImagesWidget
 
@@ -14,3 +15,4 @@ def add_page_fields(sender):
     form.fields['images'] = london.forms.Field(name='images', widget=ImagesWidget,required=False)
 
 page_form_initialize.connect(add_page_fields)
+post_form_initialize.connect(add_page_fields)

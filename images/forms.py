@@ -11,4 +11,3 @@ class ImageForm(forms.ModelForm):
             'object_verbose_name': self._meta.model._meta.verbose_name,
             'object_verbose_name_plural': self._meta.model._meta.verbose_name_plural
         }
-

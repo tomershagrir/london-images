@@ -1,13 +1,11 @@
 from london.apps import admin
 from london.urls import patterns
 from models import Image
-from forms import ImageForm
 from london.http import JsonResponse
 
 class ModuleImage(admin.CrudModule):
     model = Image
     list_display = ('name','site','keywords','image',)
-    form = ImageForm
 
     def get_urls(self):
         extra = patterns('',

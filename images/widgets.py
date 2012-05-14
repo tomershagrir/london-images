@@ -5,7 +5,6 @@ from london.templates import render_to_string
 from models import Image
 
 
-
 def partition(lst,n): return [lst[:n]] + partition(lst[n:],n) if lst and n else []
 
 class ImagesWidget(forms.Widget):

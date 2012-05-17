@@ -2,7 +2,7 @@ from jinja2 import Template
 from london.utils.safestring import mark_safe
 from london import forms
 from london.templates import render_to_string
-from models import Image
+from images.models import Image
 
 
 def partition(lst,n): return [lst[:n]] + partition(lst[n:],n) if lst and n else []

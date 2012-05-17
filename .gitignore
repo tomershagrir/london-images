@@ -6,4 +6,9 @@
 .pydevproject
 .settings
 .idea
+<<<<<<< HEAD
 .tmp*
+=======
+build/
+dist/
+>>>>>>> master

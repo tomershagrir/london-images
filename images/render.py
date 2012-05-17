@@ -13,7 +13,10 @@ class ImagesRender():
         for name in list_image:
             try:
                 obj = Image.query().filter(name=name).get()
-                img = '<img src="%s" />' % obj['image'].url
+                alt = None
+                if obj['alt_text']:
+                    alt = ' alt="%s"' % obj['alt_text']
+                img = '<img src="%s"%s />' % (obj['image'].url, alt)
                 source = source.replace("{IMAGE:%s}" % name, img)
             except:
                 continue

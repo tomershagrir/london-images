@@ -7,7 +7,7 @@ class ImagesRender():
         return self._render_images(source)
 
     def _render_images(self, source):
-        regex = re.compile("\{IMAGE:(.*)\}")
+        regex = re.compile("\{IMAGE:(.*?)\}")
         list_image = regex.findall(source)
 
         for name in list_image:

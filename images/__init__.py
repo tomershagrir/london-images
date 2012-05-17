@@ -8,4 +8,4 @@ site.register_styles_dir('images', os.path.join(os.path.dirname(__file__), 'styl
 
 def add_image_field_to_sender_form(sender):
     form = sender
-    form.fields['images'] = london.forms.Field(name='images', widget=ImagesWidget,required=False)
+    form.fields['images'] = london.forms.Field(name='images', widget=ImagesWidget(), required=False)

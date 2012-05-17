@@ -8,6 +8,12 @@ from models import Image
 def partition(lst,n): return [lst[:n]] + partition(lst[n:],n) if lst and n else []
 
 class ImagesWidget(forms.Widget):
+    
+    class Media:
+        js = ('scripts/images:scrollable/','scripts/images:images/')
+        css = {
+               'all': ('styles/images:basic/',)
+        }
 
     image_height = '50px'
     images_per_row = 6
@@ -22,6 +28,3 @@ class ImagesWidget(forms.Widget):
 
     def render_label(self, name, label):
         return mark_safe(u'<h2><span>%s</span></h2>' % name)
-
-
-

@@ -16,7 +16,7 @@
     padding-top:5px;
 }
 
-#images-container {
+.images-container {
     margin-top:10px;
     /*height: 90px;*/
     /*background: red;*/
@@ -28,19 +28,19 @@
 }
 
 
-#images-container {
+.images-container {
     margin-bottom: 30px;
 }
 
-#images-container a {
+.images-container a {
     cursor: pointer;
 }
 
-#images-container div {
+.images-container div {
     margin: 0 0 0 0;
 }
 
-#images-container .form-search {
+.images-container .form-search {
     /*margin: auto auto;*/
     -webkit-border-radius:4px;
     -moz-border-radius:4px;

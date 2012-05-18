@@ -2,7 +2,7 @@
     var TAG = '{IMAGE:{name}}';
     var query_url = '/admin/images/image/filter_images/?q=';
 
-    var container = $('#images-container'),
+    var container = $('.images-container'),
         searchForm = container.find('.form-search');
 
     function filter(objects) {

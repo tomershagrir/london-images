@@ -1,5 +1,6 @@
 from london.db import models
 from london.apps.sites.models import Site
+from thumbnails import thumbs_getattr
 
 class Image(models.Model):
     """
@@ -9,11 +10,11 @@ class Image(models.Model):
     keywords = models.ListField(blank=True, null=True)
     alt_text = models.CharField(max_length=100,blank=True,null=True)
     image = models.ImageField()
+    
+    __getattr__ = thumbs_getattr('image')
 
     def __unicode__(self):
         return self['name']
 
     def all_sites(self):
         return Site.query()
-
-

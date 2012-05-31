@@ -1,7 +1,10 @@
 import os
-from london.apps.ajax import site
+
 import london
-from widgets import ImagesWidget
+from london.apps.ajax import site
+
+from images.widgets import ImagesWidget
+
 
 site.register_scripts_dir('images', os.path.join(os.path.dirname(__file__), 'scripts'))
 site.register_styles_dir('images', os.path.join(os.path.dirname(__file__), 'styles'))

@@ -1,6 +1,8 @@
 from london.db import models
 from london.apps.sites.models import Site
-from thumbnails import thumbs_getattr
+
+from images.thumbnails import thumbs_getattr
+
 
 class Image(models.Model):
     """

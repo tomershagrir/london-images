@@ -1,5 +1,7 @@
-from models import Image
 import re
+
+from images.models import Image
+
 
 class ImagesRender():
 
@@ -8,6 +10,7 @@ class ImagesRender():
 
     def _render_images(self, source):
         regex = re.compile("\{IMAGE:(.*?)\}")
+        import pdb; pdb.set_trace()
         list_image = regex.findall(source)
 
         for name in list_image:
@@ -21,4 +24,3 @@ class ImagesRender():
             except:
                 continue
         return source
-

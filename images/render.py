@@ -10,7 +10,6 @@ class ImagesRender():
 
     def _render_images(self, source):
         regex = re.compile("\{IMAGE:(.*?)\}")
-        import pdb; pdb.set_trace()
         list_image = regex.findall(source)
 
         for name in list_image:

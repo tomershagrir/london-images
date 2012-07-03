@@ -8,6 +8,7 @@ from images.models import Image
 class ModuleImage(admin.CrudModule):
     model = Image
     list_display = ('name','site','keywords','image',)
+    exclude = ('existing_thumbnails',)
 
     def get_urls(self):
         extra = patterns('',

@@ -7,6 +7,7 @@ class ImageForm(forms.ModelForm):
 
     class Meta:
         model = Image
+        exclude = ('existing_thumbnails',)
 
     def default_context(self, *args, **kwargs):
         return {

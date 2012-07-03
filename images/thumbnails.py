@@ -71,8 +71,7 @@ def thumbs_getattr(field_name, default_url=None):
 
         try:
             thumbnail = get_thumbnail_filename()
-#            if thumbnail and (not path.exists(thumbnail) or thumb_name not in self['existing_thumbnails'].split(',')):
-            if thumbnail and not path.exists(thumbnail):
+            if thumbnail and (not path.exists(thumbnail) or thumb_name not in (self['existing_thumbnails'] or '').split(',')):
                 img = Image.open(field_value.file.name)
                 
                 if '_crop' in extra:
@@ -132,7 +131,7 @@ def thumbs_getattr(field_name, default_url=None):
                     return '' # it's better to return empty than to crash the website
 
                 # Stores this thumbnail was made to make possible to force recreation
-                self.existing_thumbnails += thumb_name+','
+                self['existing_thumbnails'] = self['existing_thumbnails']+thumb_name+',' if self['existing_thumbnails'] is not None else thumb_name+','
                 self.save()
             if method == "url":
                 return get_thumbnail_url()

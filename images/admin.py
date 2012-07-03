@@ -3,12 +3,14 @@ from london.urls import patterns
 from london.http import JsonResponse
 
 from images.models import Image
+from images.forms import ImageForm
 
 
 class ModuleImage(admin.CrudModule):
     model = Image
+    form = ImageForm
     list_display = ('name','site','keywords','image',)
-    exclude = ('existing_thumbnails',)
+    exclude = ('existing_thumbnails', 'image_center')
 
     def get_urls(self):
         extra = patterns('',

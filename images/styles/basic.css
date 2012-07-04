@@ -58,7 +58,7 @@
 }
 
 .form-search .btn {
-    background: white url("/static/images/search-icon.png") no-repeat;
+    background: white url("/static/img/search-icon.png") no-repeat;
     border: none;
     cursor: pointer;
     width: 15px;
@@ -123,9 +123,9 @@ a.disabled {
 }
 
 a.right {
-    background:url("/static/images/scroll-right.png") no-repeat;
+    background:url("/static/img/scroll-right.png") no-repeat;
 }
 
 a.left {
-    background:url("/static/images/scroll-left.png") no-repeat;
+    background:url("/static/img/scroll-left.png") no-repeat;
 }

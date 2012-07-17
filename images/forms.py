@@ -5,7 +5,6 @@ from images import signals
 
 
 class ImageForm(forms.ModelForm):
-#class ImageForm(forms.BaseModuleForm):
 
     class Meta:
         model = Image

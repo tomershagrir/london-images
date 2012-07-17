@@ -6,6 +6,7 @@ from images.thumbnails import thumbs_getattr
 
 class Image(models.Model):
     """
+    Image model to store images
     """
     name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True, db_index=True, blank=True)
@@ -32,9 +33,4 @@ class Image(models.Model):
         return self['name']
 
     def all_sites(self):
-        return Site.query()
-    
-#    def save(self):
-#        pass
-#        import pdb; pdb.set_trace();
-        
+        return Site.query()  

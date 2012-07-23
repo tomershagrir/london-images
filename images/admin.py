@@ -11,6 +11,7 @@ class ModuleImage(admin.CrudModule):
     form = ImageForm
     list_display = ('name','site','keywords','image',)
     exclude = ('existing_thumbnails', 'image_center')
+    search_fields = ('name','keywords','alt_text','copyright')
 
     def get_urls(self):
         extra = patterns('',

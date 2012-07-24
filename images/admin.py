@@ -24,7 +24,13 @@ class ModuleImage(admin.CrudModule):
     def filter_images(self, request, *args, **kwargs):
         query = request.GET.get('q')
         if query:
-            return JsonResponse(Image.query(keywords__contains=query).values('name'))
+            if self.search_fields is None:
+                self.search_fields = ('keywords',)
+            lookups = ["%s__icontains" % field for field in self.search_fields]
+            bits = query.split()
+            for bit in bits:
+                queryset = Image.query().filter_if_any(*[{lookup: bit} for lookup in lookups])
+            return JsonResponse(queryset.values('name'))
         return JsonResponse()
 
 

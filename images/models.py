@@ -4,10 +4,24 @@ from london.apps.sites.models import Site
 from images.thumbnails import thumbs_getattr
 
 
+class ImageQuerySet(models.QuerySet):
+    
+    def main(self):
+        query = self.filter(main_photo=True)
+        if query.count() == 0:
+            query = self
+        try:
+            return query[0]
+        except IndexError:
+            return None 
+
 class Image(models.Model):
     """
     Image model to store images
     """
+    class Meta:
+        query = 'images.models.ImageQuerySet'
+    
     name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True, db_index=True, blank=True)
     is_public = models.BooleanField(default=True, db_index=True, blank=True)

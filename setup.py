@@ -18,5 +18,6 @@ setup(
     author="Juan Pablo Romero",
     license="BSD License",
     packages=packages,
+    install_requires=['Pillow'],
 )
 

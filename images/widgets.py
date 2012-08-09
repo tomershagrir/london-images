@@ -8,7 +8,7 @@ from images.models import Image
 class ImagesWidget(forms.Widget):
     
     class Media:
-        js = ('scripts/images:scrollable/','scripts/images:images/')
+        js = ('images:scrollable','images:images')
         css = {
                'all': ('styles/images:basic/',)
         }

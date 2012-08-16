@@ -13,7 +13,16 @@ class ImageQuerySet(models.QuerySet):
         try:
             return query[0]
         except IndexError:
-            return None 
+            return None
+    
+    def last_not_main(self):
+        query = self.exclude(main_photo=True)
+        if query.count() == 0:
+            query = self
+        try:
+            return query[query.count()-1]
+        except IndexError:
+            return None
 
 class Image(models.Model):
     """

@@ -133,6 +133,12 @@ def thumbs_getattr(field_name, default_url=None):
                 # Stores this thumbnail was made to make possible to force recreation
                 self['existing_thumbnails'] = self['existing_thumbnails']+thumb_name+',' if self['existing_thumbnails'] is not None else thumb_name+','
                 self.save()
+
+            # Closes the file for prevent error like "Too many files open"
+            if field_value.file:
+                field_value.file.close()
+                field_value.file = None
+
             if method == "url":
                 return get_thumbnail_url()
             else:

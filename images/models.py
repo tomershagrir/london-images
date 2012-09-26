@@ -7,22 +7,27 @@ from images.thumbnails import thumbs_getattr
 class ImageQuerySet(models.QuerySet):
     
     def main(self):
-        query = self.filter(main_photo=True)
-        if query.count() == 0:
-            query = self
+        query = self.active()
+        main_photo_query = query.filter(main_photo=True)
+        if main_photo_query.count() == 0:
+            main_photo_query = query
         try:
-            return query[0]
+            return main_photo_query[0]
         except IndexError:
             return None
     
     def last_not_main(self):
-        query = self.exclude(main_photo=True)
-        if query.count() == 0:
-            query = self
+        query = self.active()
+        main_photo_query = query.exclude(main_photo=True)
+        if main_photo_query.count() == 0:
+            main_photo_query = query
         try:
-            return query[query.count()-1]
+            return main_photo_query[main_photo_query.count()-1]
         except IndexError:
             return None
+    
+    def active(self):
+        return self.filter(is_active=True)
 
 class Image(models.Model):
     """
@@ -33,7 +38,7 @@ class Image(models.Model):
     
     name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True, db_index=True, blank=True)
-    is_public = models.BooleanField(default=True, db_index=True, blank=True)
+#    is_public = models.BooleanField(default=True, db_index=True, blank=True)
     keywords = models.ListField(blank=True, null=True)
     alt_text = models.CharField(max_length=100,blank=True,null=True)
     copyright = models.CharField(max_length=100, blank=True)

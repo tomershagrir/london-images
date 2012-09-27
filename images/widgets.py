@@ -19,7 +19,7 @@ class ImagesWidget(forms.Widget):
     def partition(self, lst,n): return [lst[:n]] + self.partition(lst[n:],n) if lst and n else []
 
     def render(self, name, value, attrs=None):
-        images = Image.query()
+        images = Image.query().active()
         if 'site' in self.attrs and self.attrs['site']:
             images = images.filter(pk__in = [str(pk) for pk in self.attrs['site']['images'].values_list('pk', flat=True)])
         rows = self.partition(list(images),self.images_per_row)

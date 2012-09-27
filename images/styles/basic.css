@@ -16,8 +16,9 @@
     padding-top:5px;
 }
 
-.images-container {
+.profile-images-container, .images-container {
     margin-top:10px;
+    margin-bottom: 30px;
     /*height: 90px;*/
     /*background: red;*/
 }
@@ -28,15 +29,11 @@
 }
 
 
-.images-container {
-    margin-bottom: 30px;
-}
-
-.images-container a {
+.profile-images-container a, .images-container a {
     cursor: pointer;
 }
 
-.images-container div {
+.profile-images-container div, .images-container div {
     margin: 0 0 0 0;
 }
 
@@ -79,7 +76,7 @@
     position:relative;
     overflow:hidden;
     width: 420px;
-    height:56px;
+    height:66px;
     /*background: yellow;*/
 }
 

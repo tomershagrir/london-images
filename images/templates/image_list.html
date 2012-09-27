@@ -1,29 +1,17 @@
 <div class="images-container">
-
     <div class="form-search">
         <input type="text" class="input-medium search-query">
         <button class="btn"></button>
     </div>
-
-    <div class="clearfix scrollable-container">
-
+    <div class="scrollable-container">
         <a class="prev browse left"></a>
-
         <div id="images-scroll" class="scrollable">
             <div class="items">
                {% for row in images %}
-                    <div>
-                        {% for image in row %}
-                            <a>
-                                <img id="{{ image.pk }}" src="{{ image.get_image_60x60_url }}" height="{{ image_height }}" alt="{{ image.alt_text }}" title="{{ image.name }}">
-                            </a>
-                       {% endfor %}
-                    </div>
+                    <div>{% for image in row %}<a><img id="{{ image.pk }}" src="{{ image.get_image_60x60_url }}" alt="{{ image.alt_text }}" title="{{ image.name }}" /></a>{% endfor %}</div>
                {% endfor %}
             </div>
         </div>
-
         <a class="next browse right"></a>
     </div>
-
 </div>

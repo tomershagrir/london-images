@@ -46,7 +46,17 @@
         }
         $.getJSON(query_url + terms).success(filter);
     });
-
+    
+    function updateWidth(scrollable) {
+		var a_items = $('.items div', scrollable).first().find('a')
+		var width = 10*(a_items.length-1);
+		a_items.each(function(index, el){
+	    	width+=$(el).width();
+	    });
+		scrollable.css('width', width);
+	}
+	
+	updateWidth($('.scrollable', container));
     container.find(".scrollable").scrollable();
 
 })(jQuery);

@@ -4,7 +4,7 @@ from london import forms
 from london.templates import render_to_string
 from images.models import Image
 
-from app_settings import SITE_SPECIFIC_IMAGES 
+from app_settings import WIDGET_SITE_SPECIFIC_IMAGES 
 
 
 class ImagesWidget(forms.Widget):

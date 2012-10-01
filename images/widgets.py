@@ -4,6 +4,8 @@ from london import forms
 from london.templates import render_to_string
 from images.models import Image
 
+from app_settings import SITE_SPECIFIC_IMAGES 
+
 
 class ImagesWidget(forms.Widget):
     
@@ -20,7 +22,7 @@ class ImagesWidget(forms.Widget):
 
     def render(self, name, value, attrs=None):
         images = Image.query().active()
-        if 'site' in self.attrs and self.attrs['site']:
+        if 'site' in self.attrs and self.attrs['site'] and WIDGET_SITE_SPECIFIC_IMAGES:
             images = images.filter(pk__in = [str(pk) for pk in self.attrs['site']['images'].values_list('pk', flat=True)])
         rows = self.partition(list(images),self.images_per_row)
         return render_to_string('image_list.html', {'images':rows, 'image_height':self.image_height })

@@ -1,10 +1,10 @@
-from london import forms
+from london.apps.admin import modules
 
 from images.models import Image
 from images import signals
 
 
-class ImageForm(forms.ModelForm):
+class ImageForm(modules.BaseModuleForm):
 
     class Meta:
         model = Image

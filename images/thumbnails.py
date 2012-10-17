@@ -131,7 +131,9 @@ def thumbs_getattr(field_name, default_url=None):
                     return '' # it's better to return empty than to crash the website
 
                 # Stores this thumbnail was made to make possible to force recreation
-                self['existing_thumbnails'] = self['existing_thumbnails']+thumb_name+',' if self['existing_thumbnails'] is not None else thumb_name+','
+                existing_thumbnails = (self['existing_thumbnails'] or '').split(',')
+                existing_thumbnails.append(thumb_name)
+                self['existing_thumbnails'] = ','.join(set([t.strip() for t in existing_thumbnails if t.strip()]))
                 self.save()
 
             # Closes the file for prevent error like "Too many files open"

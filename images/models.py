@@ -42,6 +42,7 @@ class Image(models.Model):
     keywords = models.ListField(blank=True, null=True)
     alt_text = models.CharField(max_length=100,blank=True,null=True)
     copyright = models.CharField(max_length=100, blank=True)
+    title = models.CharField(max_length=100, blank=True)
     image_center = models.CharField(max_length=20, blank=True)
     existing_thumbnails = models.TextField(blank=True)
     image = models.ImageField()

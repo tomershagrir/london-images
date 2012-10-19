@@ -9,13 +9,15 @@
         // TODO: use object ids instead of names
         var names = $.map(objects,function(ob) { return ob.name });
         
+        var cnt = 0
         container.find('.items a img').each(function(i,img) {
         	var $img = $(img), title = $img.attr('title'), match = names.indexOf(title) >= 0, $items = container.find('.items div');
         	if(!match) {
         		$img.parent().hide();
         		return;
         	}
-        	$($items.get(Math.ceil((i+1)/6)-1)).append($img.parent().show()).show();
+        	$($items.get(Math.ceil((cnt+1)/6)-1)).append($img.parent().show()).show();
+        	cnt++;
         	container.find('.items div:gt('+(Math.ceil(names.length/6)-1)+')').hide();
         });
     }

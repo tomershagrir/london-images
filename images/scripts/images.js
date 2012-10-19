@@ -8,12 +8,15 @@
     function filter(objects) {
         // TODO: use object ids instead of names
         var names = $.map(objects,function(ob) { return ob.name });
+        
         container.find('.items a img').each(function(i,img) {
-            var $img = $(img),
-                title = $img.attr('title'),
-                match = names.indexOf(title) >= 0;
-
-            $img.parent().toggle(match);
+        	var $img = $(img), title = $img.attr('title'), match = names.indexOf(title) >= 0, $items = container.find('.items div');
+        	if(!match) {
+        		$img.parent().hide();
+        		return;
+        	}
+        	$($items.get(Math.ceil((i+1)/6)-1)).append($img.parent().show());
+        	container.find('.items div:gt('+(Math.ceil(names.length/6)-1)+')').hide();
         });
     }
 

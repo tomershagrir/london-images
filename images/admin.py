@@ -1,9 +1,12 @@
 from london.apps import admin
 from london.urls import patterns
 from london.http import JsonResponse
+from london.apps.sites.models import Site
+from london.apps.admin.app_settings import CURRENT_SITE_FILTER
 
 from images.models import Image
 from images.forms import ImageForm
+from images.app_settings import WIDGET_SITE_SPECIFIC_IMAGES 
 
 
 class ModuleImage(admin.CrudModule):
@@ -28,8 +31,16 @@ class ModuleImage(admin.CrudModule):
                 self.search_fields = ('keywords',)
             lookups = ["%s__icontains" % field for field in self.search_fields]
             bits = query.split()
+            
+            site = None
+            if request.session[CURRENT_SITE_FILTER] != '':
+                site = Site.query().get(pk = request.session[CURRENT_SITE_FILTER])
+            
+            queryset = Image.query()
             for bit in bits:
-                queryset = Image.query().filter_if_any(*[{lookup: bit} for lookup in lookups])
+                if site and WIDGET_SITE_SPECIFIC_IMAGES:
+                    queryset = queryset.filter(pk__in = [str(pk) for pk in site['images'].values_list('pk', flat=True)])
+                queryset = queryset.filter_if_any(*[{lookup: bit} for lookup in lookups])
             return JsonResponse(queryset.values('name'))
         return JsonResponse()
 

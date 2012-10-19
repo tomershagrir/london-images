@@ -15,7 +15,7 @@
         		$img.parent().hide();
         		return;
         	}
-        	$($items.get(Math.ceil((i+1)/6)-1)).append($img.parent().show());
+        	$($items.get(Math.ceil((i+1)/6)-1)).append($img.parent().show()).show();
         	container.find('.items div:gt('+(Math.ceil(names.length/6)-1)+')').hide();
         });
     }

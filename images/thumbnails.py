@@ -120,7 +120,7 @@ def thumbs_getattr(field_name, default_url=None):
                             new_size = (size[0], int(size[0]/q))
                     img = img.resize(new_size, Image.ANTIALIAS)
                 else:
-                    if img:
+                    if size:
                         img.thumbnail(size, Image.ANTIALIAS)
 
                 if '_gray' in extra:

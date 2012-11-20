@@ -45,6 +45,7 @@ def thumbs_getattr(field_name, default_url=None):
             raise AttributeError, name
         #width, height, extra, method = match.groups()
         size_group, extra, method = match.groups()
+
         if size_group != 'original':
             width, height = size_group.split('x')
             size = int(width), int(height)
@@ -52,7 +53,6 @@ def thumbs_getattr(field_name, default_url=None):
         else:
             size = None
             thumb_name = '%s' % extra
-            
 
         def get_thumbnail_filename():
             try:
@@ -150,6 +150,6 @@ def thumbs_getattr(field_name, default_url=None):
             if method == 'url' and default_url is not None:
                 return default_url % size
             else:
-                raise
+                return ''
     
     return _getattr

@@ -127,7 +127,10 @@ def thumbs_getattr(field_name, default_url=None):
                     img = ImageOps.grayscale(img)
 
                 try: # XXX
-                    img.save(thumbnail)
+                    # fixing "IOError: cannot write mode P as JPEG"
+                    if img.mode != "RGB": 
+                        img = img.convert("RGB")
+                    img.save(thumbnail) # saving
                 except KeyError:
                     return '' # it's better to return empty than to crash the website
 

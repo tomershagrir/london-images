@@ -8,7 +8,7 @@ class ImageForm(modules.BaseModuleForm):
 
     class Meta:
         model = Image
-        exclude = ('existing_thumbnails', 'image_center')
+        exclude = ('existing_thumbnails', 'image_center', 'created')
 
     def default_context(self, *args, **kwargs):
         context = super(ImageForm, self).default_context(*args, **kwargs)

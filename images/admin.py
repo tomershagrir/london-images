@@ -13,7 +13,7 @@ class ModuleImage(admin.CrudModule):
     model = Image
     form = ImageForm
     list_display = ('name','site','keywords','image',)
-    exclude = ('existing_thumbnails', 'image_center')
+    exclude = ('existing_thumbnails', 'image_center', 'created')
     search_fields = ('name','keywords','alt_text','copyright')
 
     def get_urls(self):

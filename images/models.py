@@ -1,3 +1,4 @@
+import datetime
 from london.db import models
 from london.apps.sites.models import Site
 
@@ -35,6 +36,7 @@ class Image(models.Model):
     """
     class Meta:
         query = 'images.models.ImageQuerySet'
+        ordering = ('-created', )
     
     name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True, db_index=True, blank=True)
@@ -47,6 +49,7 @@ class Image(models.Model):
     existing_thumbnails = models.TextField(blank=True)
     image = models.ImageField()
     sites = models.ManyToManyField(Site, blank=True, related_name='images')
+    created = models.DateTimeField(default=datetime.datetime.now, blank=True)
     
     __getattr__ = thumbs_getattr('image')
     

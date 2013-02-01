@@ -128,9 +128,12 @@ def thumbs_getattr(field_name, default_url=None):
 
                 try: # XXX
                     # fixing "IOError: cannot write mode P as JPEG"
-                    if img.mode != "RGB": 
+                    if img.format == 'JPEG' and img.mode != "RGB": 
                         img = img.convert("RGB")
-                    img.save(thumbnail) # saving
+                    if img.format == 'JPEG':
+                        img.save(thumbnail, 'JPEG', quality=100)
+                    else:
+                        img.save(thumbnail) # saving
                 except KeyError:
                     return '' # it's better to return empty than to crash the website
 

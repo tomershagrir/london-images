@@ -39,10 +39,10 @@ def thumbs_getattr(field_name, default_url=None):
         """
         field_value = self[field_name]
         if not field_value:
-            raise AttributeError, name
+            return self.get_attr(name)
         match = re.match(GET_THUMB_PATTERN, name)
         if match is None:
-            raise AttributeError, name
+            return self.get_attr(name)
         #width, height, extra, method = match.groups()
         size_group, extra, method = match.groups()
 
